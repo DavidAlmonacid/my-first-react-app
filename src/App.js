@@ -1,8 +1,6 @@
-import './App.css';
+import './styles/css/App.css';
 import TodoCounter from './components/TodoCounter';
-import TodoSearch from './components/TodoSearch';
-import CreateTodoButton from './components/CreateTodoButton';
-import TodoList from './components/TodoList';
+import TodoForm from './components/TodoForm';
 import TodoItem from './components/TodoItem';
 
 const todos = [
@@ -14,16 +12,15 @@ const todos = [
 
 function App() {
   return (
-    <>
+    <section className='todo'>
       <TodoCounter />
-      <TodoSearch />
-      <CreateTodoButton />
-      <TodoList>
-        {todos.map((todo) => (
-          <TodoItem key={crypto.randomUUID()} text={todo.text} />
+      <TodoForm />
+      <div className='todo__tasks'>
+        {todos.map((todo, index) => (
+          <TodoItem text={todo.text} id={index + 1} key={index} />
         ))}
-      </TodoList>
-    </>
+      </div>
+    </section>
   );
 }
 

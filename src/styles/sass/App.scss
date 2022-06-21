@@ -1,0 +1,79 @@
+.todo {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  margin: 0 auto;
+  padding-top: 30px;
+  width: 98%;
+  min-width: 316px;
+  max-width: 400px;
+
+  &__counter {
+    text-transform: uppercase;
+  }
+
+  &__form {
+    * {
+      font: inherit;
+    }
+
+    :first-child {
+      margin-right: 12px;
+    }
+  }
+
+  &__input {
+    border-radius: 4px;
+    border: 1px solid #a0a0a0;
+    padding: 4px 8px;
+  }
+
+  &__add {
+    border-radius: 9em;
+    border: 0;
+    padding: 6px 9.5px;
+    background-color: #40c97b;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  &__tasks {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+    width: 100%;
+  }
+
+  &__task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 4px;
+    padding: 8px;
+    background-color: #dadada;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  &__delete {
+    border-radius: 3px;
+    border: 0;
+    padding: 3px;
+    width: 24px;
+    background-color: #e99bc7;
+
+    img {
+      width: 100%;
+    }
+  }
+}

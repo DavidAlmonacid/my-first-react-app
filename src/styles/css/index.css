@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  display: inline-grid;
+  place-items: center;
+  cursor: pointer;
+}
