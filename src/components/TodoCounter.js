@@ -1,5 +1,11 @@
-function TodoCounter() {
-  return <h3 className='todo__counter'>2 of 3 tasks completed</h3>;
+function TodoCounter({ completed, total }) {
+  return (
+    <header>
+      <h3 className='todo__counter'>
+        {completed} of {total} tasks completed
+      </h3>
+    </header>
+  );
 }
 
 export default TodoCounter;
