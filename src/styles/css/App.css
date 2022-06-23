@@ -26,7 +26,7 @@
   border-radius: 9em;
   border: 0;
   padding: 6px 9.5px;
-  background-color: #40c97b;
+  background-color: #7c80f4;
   font-weight: 600;
   line-height: 1;
 }
@@ -50,8 +50,9 @@
   gap: 8px;
 }
 .todo__checkbox {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
+  accent-color: #f09396;
   cursor: pointer;
 }
 .todo__delete {
@@ -59,7 +60,7 @@
   border: 0;
   padding: 3px;
   width: 24px;
-  background-color: #e99bc7;
+  background-color: #f09396;
 }
 .todo__delete img {
   width: 100%;
