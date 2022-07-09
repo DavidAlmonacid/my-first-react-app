@@ -1,6 +1,6 @@
 import TrashIcon from '../assets/trash-icon.svg';
 
-function TodoItem({ text, completed, id }) {
+export const TodoItem = ({ text, completed, id }) => {
   const handleCheckboxChange = (e) => {
     const checked = e.target.checked;
     const name = document.querySelector(`.todo__name${id}`);
@@ -36,6 +36,4 @@ function TodoItem({ text, completed, id }) {
       </div>
     </div>
   );
-}
-
-export default TodoItem;
+};

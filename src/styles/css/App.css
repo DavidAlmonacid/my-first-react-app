@@ -8,7 +8,13 @@
   min-width: 316px;
   max-width: 400px;
 }
+.todo__header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
 .todo__counter {
+  width: 160px;
   text-transform: uppercase;
 }
 .todo__form * {
@@ -18,9 +24,11 @@
   margin-right: 12px;
 }
 .todo__input {
+  flex-grow: 1;
   border-radius: 4px;
   border: 1px solid #a0a0a0;
-  padding: 4px 8px;
+  padding: 4px 12px;
+  font: inherit;
 }
 .todo__add {
   border-radius: 9em;

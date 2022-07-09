@@ -1,11 +1,7 @@
-function TodoCounter({ completed, total }) {
+export const TodoCounter = ({ completed, total }) => {
   return (
-    <header>
-      <h3 className='todo__counter'>
-        {completed} of {total} tasks completed
-      </h3>
-    </header>
+    <h3 className='todo__counter'>
+      {completed} of {total} tasks completed
+    </h3>
   );
-}
-
-export default TodoCounter;
+};

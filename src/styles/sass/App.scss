@@ -8,7 +8,14 @@
   min-width: 316px;
   max-width: 400px;
 
+  &__header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
   &__counter {
+    width: 160px;
     text-transform: uppercase;
   }
 
@@ -23,9 +30,11 @@
   }
 
   &__input {
+    flex-grow: 1;
     border-radius: 4px;
     border: 1px solid #a0a0a0;
-    padding: 4px 8px;
+    padding: 4px 12px;
+    font: inherit;
   }
 
   &__add {
