@@ -3,26 +3,18 @@ import { TodoHeader } from './components/TodoHeader';
 import { CreateTodo } from './components/CreateTodo';
 import { TodoList } from './components/TodoList';
 import { useState } from 'react';
+import { useLocalStorage } from './customHooks/useLocalStorage';
+
+// const defaultTodos = [
+//   { text: 'Hacer almuerzo', done: !false },
+//   { text: 'Barrer', done: false },
+//   { text: 'Tender camas', done: false },
+//   { text: 'Estudiar React', done: false },
+// ];
+// localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 export const App = () => {
-  // const defaultTodos = [
-  //   { text: 'Hacer almuerzo', done: !false },
-  //   { text: 'Barrer', done: false },
-  //   { text: 'Tender camas', done: false },
-  //   { text: 'Estudiar React', done: false },
-  // ];
-  const localStorageVersion = 'TODOS_V1';
-  // localStorage.setItem(localStorageVersion, JSON.stringify(defaultTodos));
-  const localStorageTodos = localStorage.getItem(localStorageVersion);
-
-  let parsedTodos = [];
-  if (localStorageTodos) {
-    parsedTodos = JSON.parse(localStorageTodos);
-  } else {
-    localStorage.setItem(localStorageVersion, JSON.stringify(parsedTodos));
-  }
-
-  const [todos, setTodos] = useState(parsedTodos);
+  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
   const [value, setValue] = useState('');
 
   const doneTodos = todos.filter((todo) => todo.done).length;
@@ -48,11 +40,7 @@ export const App = () => {
 
       <CreateTodo />
 
-      <TodoList
-        todos={searchedTodos}
-        setTodos={setTodos}
-        locVer={localStorageVersion}
-      />
+      <TodoList todos={searchedTodos} setTodos={saveTodos} />
     </section>
   );
 };
