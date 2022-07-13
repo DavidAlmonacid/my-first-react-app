@@ -52,6 +52,9 @@
   padding: 8px;
   background-color: #dadada;
 }
+.todo__name--completed {
+  text-decoration: line-through;
+}
 .todo__actions {
   display: flex;
   align-items: center;

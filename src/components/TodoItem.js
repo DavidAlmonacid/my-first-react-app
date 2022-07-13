@@ -1,20 +1,11 @@
 import TrashIcon from '../assets/trash-icon.svg';
 
-export const TodoItem = ({ text, completed, id }) => {
-  const handleCheckboxChange = (e) => {
-    const checked = e.target.checked;
-    const name = document.querySelector(`.todo__name${id}`);
-    name.style.textDecoration = checked ? 'line-through' : 'none';
-
-    const title = (e.target.title = `Mark as ${checked ? 'un' : ''}done`);
-    return title;
-  };
-
+export const TodoItem = ({ text, done, id, onComplete, handleDelete }) => {
   return (
     <div className='todo__task'>
       <label
         className={`todo__name${id} ${
-          completed ? 'todo__name--completed' : ''
+          done ? 'todo__name--completed' : ''
         }`.trimEnd()}
         htmlFor={`todo-checkbox-${id}`}
       >
@@ -26,11 +17,17 @@ export const TodoItem = ({ text, completed, id }) => {
           type='checkbox'
           className='todo__checkbox'
           id={`todo-checkbox-${id}`}
-          title='Mark as done'
-          onChange={handleCheckboxChange}
+          title={`Mark as ${done ? 'un' : ''}done`}
+          checked={done ? true : false}
+          onChange={onComplete}
         />
 
-        <button className='todo__delete' type='button' title='Delete task'>
+        <button
+          className='todo__delete'
+          type='button'
+          title='Delete task'
+          onClick={handleDelete}
+        >
           <img src={TrashIcon} alt='Trash icon' />
         </button>
       </div>

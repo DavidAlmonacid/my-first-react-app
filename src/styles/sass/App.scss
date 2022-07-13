@@ -62,6 +62,10 @@
     background-color: #dadada;
   }
 
+  &__name--completed {
+    text-decoration: line-through;
+  }
+
   &__actions {
     display: flex;
     align-items: center;
