@@ -4,15 +4,25 @@ import { CreateTodo } from './components/CreateTodo';
 import { TodoList } from './components/TodoList';
 import { useState } from 'react';
 
-export const defaultTodos = [
-  { text: 'Hacer almuerzo', done: !false },
-  { text: 'Barrer', done: false },
-  { text: 'Tender camas', done: false },
-  { text: 'Estudiar React', done: false },
-];
-
 export const App = () => {
-  const [todos, setTodos] = useState(defaultTodos);
+  // const defaultTodos = [
+  //   { text: 'Hacer almuerzo', done: !false },
+  //   { text: 'Barrer', done: false },
+  //   { text: 'Tender camas', done: false },
+  //   { text: 'Estudiar React', done: false },
+  // ];
+  const localStorageVersion = 'TODOS_V1';
+  // localStorage.setItem(localStorageVersion, JSON.stringify(defaultTodos));
+  const localStorageTodos = localStorage.getItem(localStorageVersion);
+
+  let parsedTodos = [];
+  if (localStorageTodos) {
+    parsedTodos = JSON.parse(localStorageTodos);
+  } else {
+    localStorage.setItem(localStorageVersion, JSON.stringify(parsedTodos));
+  }
+
+  const [todos, setTodos] = useState(parsedTodos);
   const [value, setValue] = useState('');
 
   const doneTodos = todos.filter((todo) => todo.done).length;
@@ -35,8 +45,14 @@ export const App = () => {
         inputValue={value}
         setInputValue={setValue}
       />
+
       <CreateTodo />
-      <TodoList todos={searchedTodos} setTodos={setTodos} />
+
+      <TodoList
+        todos={searchedTodos}
+        setTodos={setTodos}
+        locVer={localStorageVersion}
+      />
     </section>
   );
 };

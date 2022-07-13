@@ -1,16 +1,22 @@
 import { TodoItem } from './TodoItem';
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({ todos, setTodos, locVer }) => {
+  const saveTodos = (todosArray) => {
+    const stringifiedTodos = JSON.stringify(todosArray);
+    localStorage.setItem(locVer, stringifiedTodos);
+    setTodos(todosArray);
+  };
+
   const completeTodo = (index, done) => {
     const newTodos = [...todos];
     newTodos[index].done = !done;
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   const deleteTodo = (index) => {
     const newTodos = [...todos];
     newTodos.splice(index, 1);
-    setTodos(newTodos);
+    saveTodos(newTodos);
   };
 
   return (

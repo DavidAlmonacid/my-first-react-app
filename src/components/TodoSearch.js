@@ -1,7 +1,6 @@
 export const TodoSearch = ({ inputValue, setInputValue }) => {
   const handleInputChange = (e) => {
-    const value = e.target.value;
-    setInputValue(value);
+    setInputValue(e.target.value);
   };
 
   return (
