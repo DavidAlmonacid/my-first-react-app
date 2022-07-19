@@ -1,6 +1,7 @@
+import '../styles/components/TodoList.min.css';
 import { TodoItem } from './TodoItem';
 
-export const TodoList = ({ todos, setTodos }) => {
+export const TodoList = ({ todos, setTodos, loading, error }) => {
   const completeTodo = (index, done) => {
     const newTodos = [...todos];
     newTodos[index].done = !done;
@@ -14,7 +15,13 @@ export const TodoList = ({ todos, setTodos }) => {
   };
 
   return (
-    <div className='todo__tasks'>
+    <div className='todoList'>
+      <p className='todoList__status'>
+        {error && 'There was an error, please reload.'}
+        {loading && !error && 'Loading your tasks.'}
+        {!loading && !todos.length && !error && 'Create a new task.'}
+      </p>
+
       {todos.map((todo, index) => (
         <TodoItem
           text={todo.text}

@@ -1,4 +1,4 @@
-import './styles/css/App.css';
+import './styles/App.min.css';
 import { TodoHeader } from './components/TodoHeader';
 import { CreateTodo } from './components/CreateTodo';
 import { TodoList } from './components/TodoList';
@@ -14,19 +14,25 @@ import { useLocalStorage } from './customHooks/useLocalStorage';
 // localStorage.setItem('TODOS_V1', JSON.stringify(defaultTodos));
 
 export const App = () => {
-  const [todos, saveTodos] = useLocalStorage('TODOS_V1', []);
+  const {
+    item: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage('TODOS_V1', []);
   const [value, setValue] = useState('');
 
   const doneTodos = todos.filter((todo) => todo.done).length;
   const totalTodos = todos.length;
 
   let searchedTodos = [];
-  if (!value) {
-    searchedTodos = todos;
-  } else {
-    searchedTodos = todos.filter((todo) =>
-      todo.text.toLowerCase().includes(value.toLowerCase())
+  // prettier-ignore
+  if (value) {
+    searchedTodos = todos.filter(
+      (todo) => todo.text.toLowerCase().includes(value.toLowerCase())
     );
+  } else {
+    searchedTodos = todos;
   }
 
   return (
@@ -40,7 +46,12 @@ export const App = () => {
 
       <CreateTodo />
 
-      <TodoList todos={searchedTodos} setTodos={saveTodos} />
+      <TodoList
+        todos={searchedTodos}
+        setTodos={saveTodos}
+        loading={loading}
+        error={error}
+      />
     </section>
   );
 };
